@@ -5,11 +5,11 @@ using System.Linq;
 
 public class Assessor : MonoBehaviour
 {
-    float[] dummyData = {6, 2, 3, 1, 2, 4, 6};
+    float[] dummyData = {100, 80, 40, 100, 20, 45, 67};
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(StandardDeviation(dummyData));
+        Debug.Log(CalculateZScore(80, dummyData));
     }
 
     // Update is called once per frame
@@ -36,5 +36,9 @@ public class Assessor : MonoBehaviour
         return sDeviation;
     }
 
+    float CalculateZScore(float valueToEvalutate, float [] collection)
+    {
+        return (valueToEvalutate - collection.Average()) / StandardDeviation(collection);
+    }
 
 }
