@@ -9,7 +9,7 @@ public class Assessor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(CalculateZScore(80, dummyData));
+        Debug.Log(CalculateZScore(123, dummyData));
     }
 
     // Update is called once per frame
@@ -30,8 +30,8 @@ public class Assessor : MonoBehaviour
        { 
             var distance = Mathf.Pow(c - values.Average(), 2);  
             return distance; 
-        })
-        .ToList();
+       })
+       .ToList();
         var sDeviation = Mathf.Sqrt(distanceValues.Sum(c=> c) / distanceValues.Count());
         return sDeviation;
     }
