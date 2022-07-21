@@ -1,44 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
+﻿using UnityEngine;
 
 public class Assessor : MonoBehaviour
 {
-    float[] dummyData = {100, 80, 40, 100, 20, 45, 67};
+    float[] dummyData = {6, 2, 3, 1};
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(CalculateZScore(123, dummyData));
-    }
+        var service = new AssesorService(dummyData);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log(service.CalculateZScore(2));
     }
-
-   /// <summary>
-   /// 
-   /// </summary>
-   /// <param name="values"></param>
-   /// <returns></returns>
-    float StandardDeviation(float [] values)
-    {
-        //calculate the distance of each variable of our collection
-       var distanceValues = values.Select(c => 
-       { 
-            var distance = Mathf.Pow(c - values.Average(), 2);  
-            return distance; 
-       })
-       .ToList();
-        var sDeviation = Mathf.Sqrt(distanceValues.Sum(c=> c) / distanceValues.Count());
-        return sDeviation;
-    }
-
-    float CalculateZScore(float valueToEvalutate, float [] collection)
-    {
-        return (valueToEvalutate - collection.Average()) / StandardDeviation(collection);
-    }
-
 }
