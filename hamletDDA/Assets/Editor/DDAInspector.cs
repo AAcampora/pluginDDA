@@ -9,7 +9,8 @@ public class DDAInspector : EditorWindow
 {
     string name = " ";
     DDAManager targetManager;
-    DataCollector targetCollector;
+    GameObject targetCollector;
+    public int index = 0;
 
     [MenuItem("Window/Hamlet DDA")]
 
@@ -25,8 +26,14 @@ public class DDAInspector : EditorWindow
 
         GUILayout.Label("Observers Settings", EditorStyles.boldLabel);
         name = EditorGUILayout.TextField("name of Observer", name);
-        targetCollector = (DataCollector)EditorGUILayout.ObjectField(targetCollector, typeof(DataCollector), true);
+        targetCollector = (GameObject)EditorGUILayout.ObjectField(targetCollector, typeof(GameObject), true);
 
+        var properties = targetCollector.GetComponent<DataCollector>().GetType().GetFields();
+        for (int i = 0; i < properties.Length; i++)
+        {
+            Debug.Log(properties[i].ToString());
+        }
+        //index = EditorGUILayout.Popup(index, properties);
 
         if (GUILayout.Button("Insert new Observer Value"))
         {

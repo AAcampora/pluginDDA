@@ -7,13 +7,15 @@ using UnityEngine;
 public class DataCollector : MonoBehaviour
 {
     public string valueName;
+    public DataSaved PData;
+    public float test;
+
     private void Start()
     {
-
-        if(!File.Exists(Application.dataPath +"/DDASaveFolder/" + valueName + ".json"))
-        {
-            PlayerData PData = new PlayerData();
-            PData.health = 80;
+        //PData = new DataSaved(valueName, value);
+        //check if the json file exist, if it doesn't, create it immediatly
+        if (!File.Exists(Application.dataPath +"/DDASaveFolder/" + valueName + ".json"))
+        {   
             string json = JsonUtility.ToJson(PData);
             File.WriteAllText(Application.dataPath + "/DDASaveFolder/" + valueName +".json", json);
         }
@@ -33,9 +35,12 @@ public class DataCollector : MonoBehaviour
         public float health;
     }
 
-    IEnumerator SaveSnapShot()
+    IEnumerator SaveSnapShot(float valueToSave)
     {
-
+        PData.Value.Add(valueToSave);
+        string json = JsonUtility.ToJson(PData);
+        File.WriteAllText(Application.dataPath + "/DDASaveFolder/" + valueName + ".json", json);
         yield return new WaitForSeconds(5f);
     }
+
 }
