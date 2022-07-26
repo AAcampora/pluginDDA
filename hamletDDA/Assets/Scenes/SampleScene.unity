@@ -271,6 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueName: Test2
+  test: 12
 --- !u!114 &941544686
 MonoBehaviour:
   m_ObjectHideFlags: 0

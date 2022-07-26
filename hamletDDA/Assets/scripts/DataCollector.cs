@@ -8,7 +8,7 @@ public class DataCollector : MonoBehaviour
 {
     public string valueName;
     public DataSaved PData;
-    public float test;
+    public float test = 12;
 
     private void Start()
     {
