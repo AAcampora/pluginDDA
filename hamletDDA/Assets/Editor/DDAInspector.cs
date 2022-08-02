@@ -13,7 +13,7 @@ public class DDAInspector : EditorWindow
     DDAManager targetManager; 
     GameObject targetCollector;
     public int index = 0;
-    public GameObject objectToGrab;
+    public DataCollector objectToGrab;
     float item;
 
     [MenuItem("Window/Hamlet DDA")]
@@ -30,18 +30,18 @@ public class DDAInspector : EditorWindow
         targetManager = (DDAManager)EditorGUILayout.ObjectField(targetManager, typeof(DDAManager), true);
 
         GUILayout.Label("Observers Settings", EditorStyles.boldLabel);
-        objectToGrab = (GameObject)EditorGUILayout.ObjectField(targetCollector, typeof(GameObject), true);
+        objectToGrab = (DataCollector)EditorGUILayout.ObjectField(objectToGrab, typeof(DataCollector), true);
         List<string> options = new List<string>();
-        if (targetCollector)
+        if (objectToGrab)
         {
-            var fields = targetCollector.GetComponent<DataCollector>().GetType().GetFields();
+            var fields = objectToGrab.GetComponent<DataCollector>().GetType().GetFields();
             foreach (var field in fields)
             {
                 options.Add(field.Name);
             }
             index = EditorGUILayout.Popup(index, options.ToArray());
 
-            var selectedItem = fields[index].GetValue(targetCollector.GetComponent<DataCollector>());
+            var selectedItem = fields[index].GetValue(objectToGrab.GetComponent<DataCollector>());
             Debug.Log(selectedItem);
         }
         
