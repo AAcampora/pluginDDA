@@ -7,40 +7,43 @@ using UnityEngine;
 public class DataCollector : MonoBehaviour
 {
     public string valueName;
-    public DataSaved PData;
-    public float test = 12;
+    [SerializeField]
+    PlayerData data;
 
+    public bool isChecking;
     private void Start()
     {
-        //PData = new DataSaved(valueName, value);
+        data = new PlayerData();
         //check if the json file exist, if it doesn't, create it immediatly
         if (!File.Exists(Application.dataPath +"/DDASaveFolder/" + valueName + ".json"))
         {   
-            string json = JsonUtility.ToJson(PData);
+            string json = JsonUtility.ToJson(data);
             File.WriteAllText(Application.dataPath + "/DDASaveFolder/" + valueName +".json", json);
         }
         else
         {
             Debug.Log("Json alredy Exists");
         }
-       
-
-        //
-        //string readJSON = File.ReadAllText(Application.dataPath + "/saveData.json");
-        //PlayerData loadedData = JsonUtility.FromJson<PlayerData>(readJSON);
-        //Debug.Log(loadedData.health);
+        StartCoroutine(SaveSnapShot(420, 1));
     }
+
     private class PlayerData
     {
-        public float health;
+       public List<float> entries = new List<float>();
     }
 
-    IEnumerator SaveSnapShot(float valueToSave)
+    public IEnumerator SaveSnapShot(float valueToSave, float secondsToWait = 5f)
     {
-        PData.Value.Add(valueToSave);
-        string json = JsonUtility.ToJson(PData);
-        File.WriteAllText(Application.dataPath + "/DDASaveFolder/" + valueName + ".json", json);
-        yield return new WaitForSeconds(5f);
+        while (isChecking)
+        {
+            data.entries.Add(valueToSave);
+            //string json = JsonUtility.ToJson(entries.ToArray());
+            //File.WriteAllText(Application.dataPath + "/DDASaveFolder/" + valueName + ".json", json);
+            string output = JsonUtility.ToJson(data);
+            Debug.Log(output);
+            File.WriteAllText(Application.dataPath + "/DDASaveFolder/" + valueName + ".json", output);
+            yield return new WaitForSeconds(1f);
+        }  
     }
 
 }

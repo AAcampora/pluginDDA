@@ -7,7 +7,5 @@ public class Assessor : MonoBehaviour
     void Start()
     {
         var service = new AssesorService(dummyData);
-
-        Debug.Log(service.CalculateZScore(2));
     }
 }
