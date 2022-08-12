@@ -8,9 +8,12 @@ public sealed class DataCollector : MonoBehaviour
 {
     [SerializeField]
     PlayerData data;
-    [Header("Settings")]
+    [Header("File Settings")]
     public float valueToSave;
     public string valueName;
+    [Header("Entries Settings")]
+    public int maximumEntryNumber = 20;
+    public float entryCooldown = 5f;
     public bool isChecking;
     private void Start()
     {
@@ -27,15 +30,20 @@ public sealed class DataCollector : MonoBehaviour
             string json = File.ReadAllText(saveAdress);
             data = JsonUtility.FromJson<PlayerData>(json);
         }
-        StartCoroutine(SaveSnapShot(1));
+        StartCoroutine(SaveSnapShot(entryCooldown));
     }
 
+    //save a snapshot of the value everyonce in a while
     private IEnumerator SaveSnapShot(float secondsToWait = 5f)
     {
-        
         while (isChecking)
         {
             data.entries.Add(valueToSave);
+            //check size of the list, remove the older measurement;
+            if (data.entries.Count > maximumEntryNumber)
+            {
+                data.entries.RemoveAt(0);
+            }
             string output = JsonUtility.ToJson(data);
             Debug.Log(output);
             File.WriteAllText(Application.dataPath + "/DDASaveFolder/" + valueName + ".json", output);

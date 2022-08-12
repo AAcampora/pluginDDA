@@ -274,7 +274,9 @@ MonoBehaviour:
   data:
     entries: []
   valueToSave: 0
-  valueName: Test2
+  valueName: finalTest
+  maximumEntryNumber: 20
+  entryCooldown: 5
   isChecking: 1
 --- !u!114 &941544686
 MonoBehaviour:
