@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    float healthTest = 0f;
+    [Range(0.0f, 120f)]
+    public float healthTest;
     public DataCollector collector;
+    public float minRange;
+    public float maxRange;
 
     // Update is called once per frame
     void Update()
     {
-        healthTest = Random.Range(10, 120);
+        //healthTest = Random.Range(minRange, maxRange);
         collector.valueToSave = healthTest;
     }
 }

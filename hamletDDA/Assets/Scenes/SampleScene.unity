@@ -274,10 +274,11 @@ MonoBehaviour:
   data:
     entries: []
   valueToSave: 0
-  valueName: finalTest
-  maximumEntryNumber: 20
-  entryCooldown: 5
+  valueName: newTest
+  maximumEntryNumber: 15
+  entryCooldown: 1
   isChecking: 1
+  calculationCooldown: 5
 --- !u!114 &941544686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +303,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa24baf5c4a91b4894b56d7ec92cfb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthTest: 36.1
   collector: {fileID: 941544685}
+  minRange: 0
+  maxRange: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

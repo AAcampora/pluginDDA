@@ -10,11 +10,6 @@ public class AssesorService
 
     public float[] Data { get; }
 
-    // <summary>
-    /// 
-    /// </summary>
-    /// <param name="values"></param>
-    /// <returns></returns>
     public float StandardDeviation(float[] values)
     {
         //calculate the distance of each variable of our collection
