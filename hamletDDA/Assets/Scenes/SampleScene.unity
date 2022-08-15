@@ -121,6 +121,94 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &358971552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 358971554}
+  - component: {fileID: 358971553}
+  - component: {fileID: 358971556}
+  - component: {fileID: 358971555}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &358971553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358971552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c761418b662cc3428c1ba270c8656a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueToChange: 5
+  ammountToSubtract: 2
+--- !u!4 &358971554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358971552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &358971555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358971552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0614a44f734b45047ac25c41ccc14c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    entries: []
+  valueToSave: 0
+  valueName: newAssesment
+  maximumEntryNumber: 15
+  entryCooldown: 1
+  isChecking: 1
+  calculationCooldown: 1
+  negativeDeviation: -1.5
+  postiveDeviation: 1.5
+  skill: 1
+--- !u!114 &358971556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358971552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa24baf5c4a91b4894b56d7ec92cfb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthTest: 61.1
+  collector: {fileID: 358971555}
+  MaximumHealth: 0
+  dp: {fileID: 358971553}
+  minRange: 0
+  maxRange: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,11 +310,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 941544684}
-  - component: {fileID: 941544685}
   - component: {fileID: 941544683}
   - component: {fileID: 941544686}
-  - component: {fileID: 941544687}
-  - component: {fileID: 941544688}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -247,7 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   observers:
-  - {fileID: 941544685}
+  - {fileID: 358971555}
   failing: 0
   outperforming: 0
   isAssessing: 1
@@ -265,29 +350,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &941544685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 941544682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0614a44f734b45047ac25c41ccc14c88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data:
-    entries: []
-  valueToSave: 0
-  valueName: newAssesment
-  maximumEntryNumber: 15
-  entryCooldown: 1
-  isChecking: 1
-  calculationCooldown: 1
-  negativeDeviation: -1.5
-  postiveDeviation: 1.5
-  skill: 1
 --- !u!114 &941544686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,39 +362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc47a2ce750374468f82971fb5fce14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &941544687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 941544682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa24baf5c4a91b4894b56d7ec92cfb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthTest: 61.1
-  collector: {fileID: 941544685}
-  minRange: 0
-  maxRange: 0
---- !u!114 &941544688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 941544682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e983ae80770a04a924ea5400377649, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  observers:
-  - {fileID: 941544685}
-  failing: 0
-  outperforming: 0
-  isAssessing: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

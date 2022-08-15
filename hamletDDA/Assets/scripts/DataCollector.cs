@@ -54,7 +54,6 @@ public sealed class DataCollector : MonoBehaviour
         {
             calculator = new AssesorService(data.entries.ToArray());
             var result = calculator.CalculateZScore(data.entries[data.entries.Count - 1]);
-            Debug.Log(result);
             //if player is strandard deviation away in the negative, he's currently doing worse than it's current behaviour 
             if (result < negativeDeviation)
             {

@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class DDAManager : MonoBehaviour
 {
     public List<DataCollector> observers = new List<DataCollector>();
     public int failing;
     public int outperforming;
     public bool isAssessing = true;
+    public static event Action PlayerFail;
+    public static event Action PlayerSuccess;
 
     private void Start()
     {
@@ -35,10 +37,13 @@ public class DDAManager : MonoBehaviour
 
             if (failing > observers.Count/2)
             {
-                Debug.Log("player is failing");
+                PlayerFail?.Invoke();
+                failing = 0;
             }
             else if (outperforming > observers.Count/2)
             {
+                PlayerSuccess?.Invoke();
+                outperforming = 0;
                 Debug.Log("player is succeding!");
             }
             yield return new WaitForSeconds(1);

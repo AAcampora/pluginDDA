@@ -5,6 +5,9 @@ public class Test : MonoBehaviour
     [Range(0.0f, 120f)]
     public float healthTest;
     public DataCollector collector;
+
+    public float MaximumHealth;
+    public Dependant dp;
     public float minRange;
     public float maxRange;
 
@@ -13,5 +16,6 @@ public class Test : MonoBehaviour
     {
         //healthTest = Random.Range(minRange, maxRange);
         collector.valueToSave = healthTest;
+        MaximumHealth = dp.valueToChange;
     }
 }
