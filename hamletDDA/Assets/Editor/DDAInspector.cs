@@ -28,7 +28,6 @@ public class DDAInspector : EditorWindow
 
         GUILayout.Label("Manager Settings", EditorStyles.boldLabel);
         targetManager = (DDAManager)EditorGUILayout.ObjectField(targetManager, typeof(DDAManager), true);
-
         GUILayout.Label("Observers Settings", EditorStyles.boldLabel);
         objectToGrab = (DataCollector)EditorGUILayout.ObjectField(objectToGrab, typeof(DataCollector), true);
         List<string> options = new List<string>();

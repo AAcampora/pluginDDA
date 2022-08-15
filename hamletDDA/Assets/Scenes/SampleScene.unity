@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 941544683}
   - component: {fileID: 941544686}
   - component: {fileID: 941544687}
+  - component: {fileID: 941544688}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -245,6 +246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e983ae80770a04a924ea5400377649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers:
+  - {fileID: 941544685}
+  failing: 0
+  outperforming: 0
+  isAssessing: 1
 --- !u!4 &941544684
 Transform:
   m_ObjectHideFlags: 0
@@ -274,11 +280,14 @@ MonoBehaviour:
   data:
     entries: []
   valueToSave: 0
-  valueName: newTest
+  valueName: newAssesment
   maximumEntryNumber: 15
   entryCooldown: 1
   isChecking: 1
-  calculationCooldown: 5
+  calculationCooldown: 1
+  negativeDeviation: -1.5
+  postiveDeviation: 1.5
+  skill: 1
 --- !u!114 &941544686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,10 +312,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa24baf5c4a91b4894b56d7ec92cfb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthTest: 36.1
+  healthTest: 61.1
   collector: {fileID: 941544685}
   minRange: 0
   maxRange: 0
+--- !u!114 &941544688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941544682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e983ae80770a04a924ea5400377649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  observers:
+  - {fileID: 941544685}
+  failing: 0
+  outperforming: 0
+  isAssessing: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

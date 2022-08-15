@@ -19,6 +19,12 @@ public sealed class DataCollector : MonoBehaviour
     public bool isChecking;
     [Header("Calculation Settings")]
     public float calculationCooldown = 20f;
+    public float negativeDeviation = -1.5f;
+    public float postiveDeviation = 1.5f;
+
+
+    public enum skillAssesment {UNDERPERFROMING, NOMINAL, OUTPERFORMING};
+    public skillAssesment skill = skillAssesment.NOMINAL;
     private void Start()
     {
         string saveAdress = Application.dataPath + "/DDASaveFolder/" + valueName + ".json";
@@ -48,22 +54,22 @@ public sealed class DataCollector : MonoBehaviour
         {
             calculator = new AssesorService(data.entries.ToArray());
             var result = calculator.CalculateZScore(data.entries[data.entries.Count - 1]);
+            Debug.Log(result);
             //if player is strandard deviation away in the negative, he's currently doing worse than it's current behaviour 
-            if (result < -1.5f)
+            if (result < negativeDeviation)
             {
-                Debug.Log("player is failing");
+                skill = skillAssesment.UNDERPERFROMING;
             }
             //if the player is currently 1 standard deviation in the postive, means is doing better than we expect
-            else if (result > 1.5f)
+            else if (result > postiveDeviation)
             {
-                Debug.Log("player is performing better than expected");
+                skill = skillAssesment.OUTPERFORMING;
             }
             //if the player is withing a standard deviation, he's performing normally.
             else
             {
-                Debug.Log("player is performing normally");
+                skill = skillAssesment.NOMINAL;
             }
-            Debug.Log("Current Z score is " + result);
             yield return new WaitForSeconds(calculationCooldown);
         }
     }
@@ -80,7 +86,6 @@ public sealed class DataCollector : MonoBehaviour
                 data.entries.RemoveAt(0);
             }
             string output = JsonUtility.ToJson(data);
-            Debug.Log(output);
             File.WriteAllText(Application.dataPath + "/DDASaveFolder/" + valueName + ".json", output);
             yield return new WaitForSeconds(secondsToWait);
         }  
