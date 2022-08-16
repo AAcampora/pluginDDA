@@ -25,11 +25,11 @@ public class DDAManager : MonoBehaviour
             failing = 0;
             foreach (var observer in observers)
             {
-                if (observer.skill == DataCollector.skillAssesment.UNDERPERFROMING)
+                if (observer.currentSkillAssement == DataCollector.skillAssesment.UNDERPERFROMING)
                 {
                     failing++;
                 }
-                else if (observer.skill == DataCollector.skillAssesment.OUTPERFORMING)
+                else if (observer.currentSkillAssement == DataCollector.skillAssesment.OUTPERFORMING)
                 {
                     outperforming++;
                 }
